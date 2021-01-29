@@ -1,2 +1,4 @@
 <!-- Product List -->
-product list
+<div class="items">
+  <product-item *ngFor="let product of model.products" [data]="product" ></product-item>
+</div>

@@ -1,0 +1,58 @@
+[
+  {
+    "type": "text",
+    "label": "Product Name",
+    "name": "name",
+    "placeholder": "Enter Product Name",
+    "validations": [
+      {
+        "name": "required",
+        "validator": "required",
+        "message": "Product Name is Required"
+      },
+      {
+        "name": "pattern",
+        "validator": "^[a-zA-Z]+$",
+        "message": "Product Name is only text"
+      },
+      {
+        "name": "minlength",
+        "validator": "10",
+        "message": "Min Length is 10 characters"
+      },
+      {
+        "name": "maxlength",
+        "validator": "30",
+        "message": "Max Length is 30 characters"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "label": "Product Price",
+    "name": "price",
+    "placeholder": "Enter Product Price",
+    "validations": [
+      {
+        "name": "required",
+        "validator": "required",
+        "message": "Product Price is Required"
+      },
+      {
+        "name": "pattern",
+        "validator": "[0-9]*",
+        "message": "Product Name is only number"
+      },
+      {
+        "name": "minlength",
+        "validator": "2",
+        "message": "Min Length is 2 digits"
+      },
+      {
+        "name": "maxlength",
+        "validator": "4",
+        "message": "Max Length is 4 digits"
+      }
+    ]
+  }
+]

@@ -1,2 +1,7 @@
-<!-- Product List -->
-<product-list></product-list>
+<!-- Products Page -->
+<mat-card class="products">
+  <!-- Toolbar -->
+  <toolbar [data]="model.toolbarData" (onClick)="model.openProductDialog()"></toolbar>
+  <!-- List -->
+  <product-list [item]="model.addedItem"></product-list>
+</mat-card>

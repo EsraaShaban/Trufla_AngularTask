@@ -1,1 +1,29 @@
-<!-- Product -->
+<!-- Product Dialog -->
+<!-- Title -->
+<h1 mat-dialog-title>{{model.Title}}</h1>
+<!-- Content -->
+<div mat-dialog-content>
+  <!-- Form -->
+  <form [(formGroup)]="model.dynamicForm">
+    <!-- Field -->
+    <div class="input" *ngFor="let field of model.formFields">
+      <div>
+        <label>{{field.label}}</label>
+      </div>
+      <mat-form-field>
+        <input matInput [type]="field.type" [(formControlName)]="field.name" [placeholder]="field.placeholder" />
+      </mat-form-field>
+      <!-- Error -->
+      <div class="error" *ngFor="let validator of field.validations">
+        <span *ngIf="model.dynamicForm.controls[field.name].touched && model.dynamicForm.controls[field.name].errors">
+          <span *ngIf="model.dynamicForm.controls[field.name].errors[validator.name]">{{validator.message}}</span>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Actions -->
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+  <button mat-button cdkFocusInitial [disabled]="!model.dynamicForm.valid" (click)="save()">Save</button>
+</div>
