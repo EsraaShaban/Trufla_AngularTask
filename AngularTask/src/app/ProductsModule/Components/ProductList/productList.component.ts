@@ -12,7 +12,6 @@ import { ProductListModel } from './productListModel';
 export class ProductListComponent {
 
   @Input() public set item(item: IProductItem) {
-
     if(Object.keys(item).length != 0) {
       this.model.products.push(item);
       this.model.setCachedProducts(this.model.products);

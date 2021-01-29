@@ -11,28 +11,17 @@ export class ProductListModel {
   public addedItem: IProductItem = {} as IProductItem;
 
   constructor(private sharedService: SharedService, private localStorage: LocalStorageService) {
-    // if(localStorage.getItem("productsData") == null)
-    //   this.products = [];
-    // else {
-    //   this.products = JSON.parse(localStorage.getItem("productsData"));
-    //   this.loadProducts();
-    // }
-   // this.getCashedProduts();
-    this.products = this.getCashedProduts();
-    this.loadProducts();
+    if(JSON.parse(this.localStorage.get("productsData")) == null)
+      this.loadProducts();
+    else
+      this.getCashedProduts();
   }
 
 
   // Load Products
-  public loadProducts(){
+  public loadProducts() {
     this.sharedService.getProductJsonData().subscribe(res => {
       this.products = res;
-      // if(this.addedItem) {
-      // debugger
-      //   this.products.push(this.addedItem);
-      //   this.setCachedProducts(this.products);
-      //   this.loadProducts();
-      // }
     })
   }
 
@@ -43,9 +32,8 @@ export class ProductListModel {
 
   // Get Cashed Products
   public getCashedProduts() {
-    console.log(JSON.parse(this.localStorage.get("productsData")))
-    console.log(this.localStorage.get("productsData"))
-    return JSON.parse(this.localStorage.get("productsData"));
+    this.products = JSON.parse(this.localStorage.get("productsData"));
+    return this.products;
   }
 
 }
